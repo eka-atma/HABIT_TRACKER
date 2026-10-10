@@ -1,0 +1,33 @@
+{
+  "name": "winter-arc",
+  "version": "1.0.0",
+  "description": "Winter Arc progress tracker: Windows desktop app and Android app with Wi-Fi sync",
+  "main": "electron/main.js",
+  "author": "Winter Arc",
+  "license": "MIT",
+  "scripts": {
+    "test": "node scripts/test.js",
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis --publish never",
+    "android:add": "cap add android && node scripts/patch-android.js",
+    "android:sync": "cap sync android && node scripts/patch-android.js",
+    "android:debug": "cd android && gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "app.winterarc.desktop",
+    "productName": "Winter Arc",
+    "files": ["electron/**", "www/**", "package.json"],
+    "directories": { "output": "dist" },
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "perMachine": false }
+  }
+}

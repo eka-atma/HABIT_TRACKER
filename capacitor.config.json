@@ -1,0 +1,8 @@
+{
+  "appId": "app.winterarc.mobile",
+  "appName": "Winter Arc",
+  "webDir": "www",
+  "server": { "androidScheme": "https", "cleartext": true },
+  "android": { "allowMixedContent": true },
+  "plugins": { "CapacitorHttp": { "enabled": true } }
+}
